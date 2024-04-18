@@ -20,4 +20,10 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 });
 
 
+// Currency Routes
 Route::get('/convert', 'App\Http\Controllers\CurrencyController@convert');
+Route::get('/currencies', 'App\Http\Controllers\CurrencyController@index');
+
+// Report Routes
+Route::post('/store-request', 'App\Http\Controllers\ReportController@storeRequest');
+

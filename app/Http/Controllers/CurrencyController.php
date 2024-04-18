@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Currency;
 use GuzzleHttp\Client;
 
 class CurrencyController extends Controller
@@ -42,20 +42,18 @@ class CurrencyController extends Controller
 			], 500);
 		}
 	}
-}
 
-/* Sample live endpoint response for reference
-{
-  "success": true,
-  "terms": "https://currencylayer.com/terms",
-  "privacy": "https://currencylayer.com/privacy",
-  "timestamp": 1712821623,
-  "source": "USD",
-  "quotes": {
-    "USDAUD": 1.532778,
-    "USDINR": 83.36935,
-    "USDNZD": 1.670305,
-    "USDAED": 3.672245
-  }
+	// Controller method to fetch all available currencies
+	public function index()
+    {
+        $currencies = Currency::all(); // Fetch all currencies
+        return response()->json($currencies);
+    }
+
+	// Test scheduling funtion
+	public function historical() {
+		$testInput = [1, 2, 3];
+		var_dump($testInput);
+	}
+
 }
-*/
