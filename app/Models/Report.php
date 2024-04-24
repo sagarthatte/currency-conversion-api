@@ -12,7 +12,9 @@ class Report extends Model
     protected $fillable = [
         'user_id',
         'type',
-        'request_data',
+        'currency',
+        'range',
+        'interval',
         'response_data',
         'status',
         'request_at',
@@ -30,7 +32,9 @@ class Report extends Model
         $this->status = 'pending';  // Always mark new requests as pending
         $this->response_data = '';
         $this->type = $requestData['type'];
-        $this->request_data = json_encode($requestData);
+        $this->currency = $requestData['currency'];
+        $this->range = $requestData['range'];
+        $this->interval = $requestData['interval'];
         $this->request_at = now();
         $this->response_at = null;
         $this->save();

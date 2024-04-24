@@ -18,9 +18,28 @@ class ReportController extends Controller
 		$user = Auth::user();
 
 		$report = new Report();
+
+		$interval = '';
+		switch ($validatedData['range']) {
+			case 'one_month':
+				$interval = 'daily';
+				break;
+			case 'six_months':
+				$interval = 'weekly';
+				break;
+			case 'one_year':
+				$interval = 'monthly';
+				break;
+			default:
+				$interval = 'daily';
+				break;
+		}
+
 		$report = $report->storeRequest($user, [
 			'type' => 'historical',
-			'requestData' => json_encode($validatedData)
+			'range' => $validatedData['range'],
+			'interval' => $interval,
+			'currency' => $validatedData['currencies']
 		]);
 
 		return response()->json([
@@ -29,9 +48,9 @@ class ReportController extends Controller
 		]);
 	}
 
-	public function getReportStatus (Request $request, $reportId) {
-		$report = Report::where('id', $reportId)
-			->where('user_id', Auth::user()->id)
-		;
-	}
+	// public function getReportStatus (Request $request, $reportId) {
+	// 	$report = Report::where('id', $reportId)
+	// 		->where('user_id', Auth::user()->id)
+	// 	;
+	// }
 }

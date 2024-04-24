@@ -18,8 +18,10 @@ return new class extends Migration
 			$table->bigInteger('user_id')->unsigned()->index();
 			$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 			$table->string('type');
-			$table->text('request_data');
-			$table->text('response_data');
+			$table->string('currency');
+			$table->string('range');
+			$table->string('interval');
+			$table->text('response_data')->nullable();
 			$table->enum('status', ['pending', 'completed']);
 			$table->datetime('request_at');
 			$table->datetime('response_at')->nullable();
