@@ -43,9 +43,18 @@ class ReportController extends Controller
 		]);
 
 		return response()->json([
+			'success' => true,
 			'message' => 'Report request created successfully.',
 			'report_id' => $report->id
 		]);
+	}
+
+	// Fetch all reports for authenticated user
+	public function getReportsList () {
+
+		$reports = Report::where('user_id', Auth::user()->id)->get();
+
+		return response()->json($reports);
 	}
 
 	// public function getReportStatus (Request $request, $reportId) {

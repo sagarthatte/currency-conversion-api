@@ -26,4 +26,5 @@ Route::get('/currencies', 'App\Http\Controllers\CurrencyController@index');
 
 // Report Routes
 Route::post('/store-request', 'App\Http\Controllers\ReportController@storeRequest');
+Route::get('/historical-reports', 'App\Http\Controllers\ReportController@getReportsList');
 

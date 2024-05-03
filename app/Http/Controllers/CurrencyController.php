@@ -95,8 +95,8 @@ class CurrencyController extends Controller
 
 	// Controller method to fetch all available currencies
 	public function index()
-    {
-        $currencies = Currency::all(); // Fetch all currencies
-        return response()->json($currencies);
-    }
+	{
+		$currencies = Currency::all(); // Fetch all currencies
+		return response()->json($currencies);
+	}
 }
