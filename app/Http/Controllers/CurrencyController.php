@@ -58,7 +58,7 @@ class CurrencyController extends Controller
 		}
 	}
 
-	public function convert(Request $request) {
+	public function getLiveRates(Request $request) {
 		$accessKey = env('CURRENCYLAYER_ACCESS_KEY');
 		$base = $request->get('base'); // Fetch base currency
 		$target = $request->get('target'); // fetch target currency(ies)

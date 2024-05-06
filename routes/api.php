@@ -21,10 +21,11 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 
 
 // Currency Routes
-Route::get('/convert', 'App\Http\Controllers\CurrencyController@convert');
 Route::get('/currencies', 'App\Http\Controllers\CurrencyController@index');
+Route::get('/live-rates', 'App\Http\Controllers\CurrencyController@getLiveRates'); // used to fetch live currency rates
 
 // Report Routes
-Route::post('/store-request', 'App\Http\Controllers\ReportController@storeRequest');
 Route::get('/historical-reports', 'App\Http\Controllers\ReportController@getReportsList');
+Route::post('/store-request', 'App\Http\Controllers\ReportController@storeRequest');
+
 
